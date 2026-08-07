@@ -125,8 +125,10 @@ Please do not redistribute or republish without permission.
 # 🌐 Website
 
 **Website:** https://srijan-maths.github.io
+
 **E-mail** srijanchatterjee314@gmail.com
-**Phone number** +91 9007693552
+
+**Phone/WhatsApp no.** +91 9007693552
 ---
 
 *"Mathematics is not about finding answers. It is about asking better questions."*
