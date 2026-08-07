@@ -1,0 +1,16 @@
+title: Srijan Maths
+description: Original Mathematics Problems for Advanced Students
+theme: jekyll-theme-cayman
+
+url: "https://srijan-maths.github.io"
+baseurl: ""
+
+author: Srijan Chatterjee
+
+github:
+  is_project_page: false
+
+markdown: kramdown
+
+plugins:
+  - jekyll-seo-tag
