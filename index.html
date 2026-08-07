@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srijan Maths</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:Arial,Helvetica,sans-serif;
+            background:#f5f7fa;
+            color:#222;
+            line-height:1.6;
+        }
+
+        header{
+            background:linear-gradient(135deg,#1565C0,#0D47A1);
+            color:white;
+            text-align:center;
+            padding:70px 20px;
+        }
+
+        header h1{
+            font-size:3rem;
+            margin-bottom:10px;
+        }
+
+        header p{
+            font-size:1.2rem;
+            opacity:.9;
+        }
+
+        nav{
+            background:white;
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            box-shadow:0 2px 8px rgba(0,0,0,.1);
+        }
+
+        nav a{
+            color:#1565C0;
+            text-decoration:none;
+            padding:18px 22px;
+            font-weight:bold;
+            transition:.3s;
+        }
+
+        nav a:hover{
+            background:#1565C0;
+            color:white;
+        }
+
+        .container{
+            width:90%;
+            max-width:1100px;
+            margin:auto;
+        }
+
+        section{
+            margin:50px 0;
+        }
+
+        h2{
+            color:#1565C0;
+            margin-bottom:20px;
+        }
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:20px;
+        }
+
+        .card{
+            background:white;
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0 4px 12px rgba(0,0,0,.08);
+            transition:.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-5px);
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+            box-shadow:0 4px 10px rgba(0,0,0,.08);
+        }
+
+        table th{
+            background:#1565C0;
+            color:white;
+        }
+
+        table th,table td{
+            padding:15px;
+            border:1px solid #ddd;
+            text-align:center;
+        }
+
+        footer{
+            margin-top:60px;
+            background:#0D47A1;
+            color:white;
+            text-align:center;
+            padding:30px;
+        }
+
+        .button{
+            display:inline-block;
+            margin-top:20px;
+            background:#1565C0;
+            color:white;
+            text-decoration:none;
+            padding:12px 25px;
+            border-radius:8px;
+        }
+
+        .button:hover{
+            background:#0D47A1;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>Srijan Maths</h1>
+
+    <p>Original Mathematics Problems for Advanced Students</p>
+
+    <a class="button" href="problems.html">
+        Explore Problems
+    </a>
+
+</header>
+
+<nav>
+
+<a href="#about">About</a>
+
+<a href="#status">Project Status</a>
+
+<a href="#announcements">Announcements</a>
+
+<a href="#halloffame">Hall of Fame</a>
+
+<a href="#problems">Problems</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+<div class="container">
+
+<section id="about">
+
+<h2>About</h2>
+
+<p>
+
+Welcome to <strong>Srijan Maths</strong>.
+
+This project aims to publish original mathematics problems covering
+algebra, geometry, number theory, calculus, inequalities,
+functional equations, combinatorics and many other topics.
+
+The collection is intended for students preparing for Olympiads,
+JEE, and anyone who enjoys solving difficult mathematics.
+
+</p>
+
+</section>
+
+<section id="status">
+
+<h2>Project Status</h2>
+
+<table>
+
+<tr>
+
+<th>Category</th>
+
+<th>Status</th>
+
+</tr>
+
+<tr>
+
+<td>Website</td>
+
+<td>🟢 Active</td>
+
+</tr>
+
+<tr>
+
+<td>Problem Collection</td>
+
+<td>🟢 Expanding</td>
+
+</tr>
+
+<tr>
+
+<td>Official Solutions</td>
+
+<td>🟡 In Progress</td>
+
+</tr>
+
+<tr>
+
+<td>Public Release</td>
+
+<td>🔴 Coming Soon</td>
+
+</tr>
+
+</table>
+
+</section>
+
+<section id="announcements">
+
+<h2>Latest Announcements</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Website Launch</h3>
+
+<p>
+The official Srijan Maths website is now online.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Problem Archive</h3>
+
+<p>
+Original problems will be released soon.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Solutions</h3>
+
+<p>
+Official solutions will be published after the closing date.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="halloffame">
+
+<h2>Hall of Fame</h2>
+
+<table>
+
+<tr>
+
+<th>Name</th>
+
+<th>Achievement</th>
+
+<th>Date</th>
+
+</tr>
+
+<tr>
+
+<td>Coming Soon</td>
+
+<td>-</td>
+
+<td>-</td>
+
+</tr>
+
+</table>
+
+</section>
+
+<section id="problems">
+
+<h2>Problem Categories</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Algebra</h3>
+
+<p>Polynomial, Functional Equations, Inequalities</p>
+
+</div>
+
+<div class="card">
+
+<h3>Geometry</h3>
+
+<p>Euclidean Geometry, Coordinate Geometry</p>
+
+</div>
+
+<div class="card">
+
+<h3>Number Theory</h3>
+
+<p>Congruences, CRT, Totient, Diophantine Equations</p>
+
+</div>
+
+<div class="card">
+
+<h3>Calculus</h3>
+
+<p>Limits, Differentiation, Integration</p>
+
+</div>
+
+<div class="card">
+
+<h3>Combinatorics</h3>
+
+<p>Counting, Pigeonhole Principle, Graphs</p>
+
+</div>
+
+<div class="card">
+
+<h3>Miscellaneous</h3>
+
+<p>Anything that refuses to fit neatly into a category. Mathematics occasionally enjoys a little chaos.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Submissions</h2>
+
+<p>
+
+Solutions can be submitted according to the submission instructions
+provided with each released problem.
+
+Only complete proofs will be considered.
+
+</p>
+
+</section>
+
+</div>
+
+<footer>
+
+<h3>Srijan Maths</h3>
+
+<p>
+
+Original Mathematics Problems for Advanced Students
+
+</p>
+
+<br>
+
+<p>
+
+© 2026 Srijan Maths. All Rights Reserved.
+
+</p>
+
+</footer>
+
+</body>
+</html>
