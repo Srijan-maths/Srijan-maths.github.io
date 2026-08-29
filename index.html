@@ -16,7 +16,40 @@
             box-sizing:border-box;
             scroll-behavior:smooth;
         }
+<script>
+(function () {
 
+    const ANALYTICS_URL =
+        "https://script.google.com/macros/s/AKfycbw2ivnMiiV02aI5FQM_CgIBKtPWciPPZ_lqGxm1Wb5y8hpCcC4YmT8XJdIgKGt45G2I/exec";
+
+    // Create a persistent ID for this browser
+    let visitorId = localStorage.getItem("visitor_id");
+
+    if (!visitorId) {
+        visitorId =
+            crypto.randomUUID();
+
+        localStorage.setItem("visitor_id", visitorId);
+    }
+
+    const page = window.location.pathname;
+
+    const userAgent = navigator.userAgent;
+
+    const url =
+        ANALYTICS_URL +
+        "?visitorId=" + encodeURIComponent(visitorId) +
+        "&page=" + encodeURIComponent(page) +
+        "&userAgent=" + encodeURIComponent(userAgent);
+
+    // Send the page view
+    fetch(url, {
+        method: "GET",
+        mode: "no-cors"
+    });
+
+})();
+</script>
         body{
             font-family:Arial,Helvetica,sans-serif;
             background:#f5f7fa;
