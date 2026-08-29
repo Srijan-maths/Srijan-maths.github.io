@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Sample Problems</title>
 
-    <!-- MathJax: renders LaTeX -->
+
+    <!-- =============================== -->
+    <!-- MATHJAX -->
+    <!-- =============================== -->
+
     <script>
         MathJax = {
             tex: {
@@ -23,57 +29,80 @@
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
     </script>
 
+
+    <!-- =============================== -->
+    <!-- WEBSITE ANALYTICS -->
+    <!-- =============================== -->
+
+    <script>
+        (function () {
+
+            const ANALYTICS_URL =
+                "https://script.google.com/macros/s/AKfycbw2ivnMiiV02aI5FQM_CgIBKtPWciPPZ_lqGxm1Wb5y8hpCcC4YmT8XJdIgKGt45G2I/exec";
+
+            let visitorId = localStorage.getItem("visitor_id");
+
+            if (!visitorId) {
+                visitorId = crypto.randomUUID();
+                localStorage.setItem("visitor_id", visitorId);
+            }
+
+            const page = window.location.pathname;
+            const userAgent = navigator.userAgent;
+
+            const url =
+                ANALYTICS_URL +
+                "?visitorId=" + encodeURIComponent(visitorId) +
+                "&page=" + encodeURIComponent(page) +
+                "&userAgent=" + encodeURIComponent(userAgent);
+
+            fetch(url, {
+                method: "GET",
+                mode: "no-cors"
+            });
+
+        })();
+    </script>
+
+
+    <!-- =============================== -->
+    <!-- CSS -->
+    <!-- =============================== -->
+
     <style>
+
         * {
             box-sizing: border-box;
         }
-<script>
-(function () {
 
-    const ANALYTICS_URL =
-        "https://script.google.com/macros/s/AKfycbw2ivnMiiV02aI5FQM_CgIBKtPWciPPZ_lqGxm1Wb5y8hpCcC4YmT8XJdIgKGt45G2I/exec";
-
-    // Create a persistent ID for this browser
-    let visitorId = localStorage.getItem("visitor_id");
-
-    if (!visitorId) {
-        visitorId =
-            crypto.randomUUID();
-
-        localStorage.setItem("visitor_id", visitorId);
-    }
-
-    const page = window.location.pathname;
-
-    const userAgent = navigator.userAgent;
-
-    const url =
-        ANALYTICS_URL +
-        "?visitorId=" + encodeURIComponent(visitorId) +
-        "&page=" + encodeURIComponent(page) +
-        "&userAgent=" + encodeURIComponent(userAgent);
-
-    // Send the page view
-    fetch(url, {
-        method: "GET",
-        mode: "no-cors"
-    });
-
-})();
-</script>
+        html,
         body {
             margin: 0;
+            padding: 0;
             background: #0b0d10;
             color: #e8eaed;
+        }
+
+        body {
             font-family: Georgia, "Times New Roman", serif;
             line-height: 1.7;
         }
+
+
+        /* =============================== */
+        /* MAIN CONTAINER */
+        /* =============================== */
 
         .container {
             width: min(900px, 92%);
             margin: auto;
             padding: 60px 0 80px;
         }
+
+
+        /* =============================== */
+        /* HEADER */
+        /* =============================== */
 
         header {
             text-align: center;
@@ -82,14 +111,22 @@
 
         header h1 {
             font-size: 42px;
-            margin-bottom: 8px;
+            margin: 0 0 12px;
+            color: #ffffff;
         }
 
         header p {
             color: #9aa0a6;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 15px;
+            margin: 0 auto;
+            max-width: 750px;
         }
+
+
+        /* =============================== */
+        /* PROBLEM CARD */
+        /* =============================== */
 
         .problem {
             background: #12161b;
@@ -97,60 +134,121 @@
             border-radius: 14px;
             padding: 34px;
             margin-bottom: 32px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.25);
         }
+
+
+        /* =============================== */
+        /* PROBLEM HEADER */
+        /* =============================== */
 
         .problem-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
+
             margin-bottom: 25px;
             padding-bottom: 16px;
+
             border-bottom: 1px solid #252a31;
         }
 
         .problem-number {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
             font-weight: bold;
             color: #aeb4bd;
+
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .difficulty {
-            font-family: Arial, sans-serif;
+
+        /* =============================== */
+        /* DIFFICULTY + RANGE */
+        /* =============================== */
+
+        .difficulty,
+        .range {
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 13px;
+
             padding: 5px 10px;
+
             border-radius: 20px;
+
             border: 1px solid #3a4048;
+
             color: #d5d9df;
+
+            white-space: nowrap;
         }
+
+
+        /* =============================== */
+        /* PROBLEM TITLE */
+        /* =============================== */
 
         .problem h2 {
             font-size: 25px;
             margin: 0 0 20px;
+            color: #ffffff;
         }
+
+
+        /* =============================== */
+        /* PROBLEM CONTENT */
+        /* =============================== */
 
         .problem-content {
             font-size: 17px;
             color: #d8dbe0;
+            overflow-wrap: break-word;
         }
 
-        .math {
-            overflow-x: auto;
-            padding: 10px 0;
+        .problem-content p {
+            margin: 18px 0;
         }
+
+
+        /* =============================== */
+        /* MATHJAX */
+        /* =============================== */
+
+        mjx-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+            max-width: 100%;
+        }
+
+
+        /* =============================== */
+        /* FOOTER */
+        /* =============================== */
 
         footer {
             text-align: center;
             margin-top: 50px;
             color: #666d76;
-            font-family: Arial, sans-serif;
+
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 13px;
         }
 
-        @media (max-width: 600px) {
+
+        /* =============================== */
+        /* MOBILE */
+        /* =============================== */
+
+        @media (max-width: 700px) {
+
+            .container {
+                padding-top: 35px;
+            }
+
             header h1 {
                 font-size: 32px;
             }
@@ -162,146 +260,415 @@
             .problem-header {
                 align-items: flex-start;
                 flex-direction: column;
-                gap: 8px;
+            }
+
+            .problem-content {
+                font-size: 16px;
             }
         }
+
     </style>
+
 </head>
+
 
 <body>
 
 <div class="container">
 
+
+    <!-- =============================== -->
+    <!-- PAGE HEADER -->
+    <!-- =============================== -->
+
     <header>
+
         <h1>Sample Problems</h1>
-        <p>Selected problems in advanced mathematics: After first submission of a problem, solution will be revealed in the solutions section. Hall of Fame Entry is available.</p>
+
+        <p>
+            Selected problems in advanced mathematics.
+            After first submission of a problem, solution will be revealed
+            in the solutions section. Hall of Fame Entry is available.
+        </p>
+
     </header>
 
 
-    <!-- ========================= -->
-    <!-- PROBLEM 1: OLYMPIAD -->
-    <!-- ========================= -->
+
+    <!-- ================================================= -->
+    <!-- PROBLEM 1 -->
+    <!-- ================================================= -->
 
     <section class="problem">
 
         <div class="problem-header">
-            <span class="problem-number">Problem 1 · Olympiad Level</span>
-            <span class="difficulty">9.5 / 10</span>
-          <span class="Range: ">Class 9-12</span>
+
+            <span class="problem-number">
+                Problem 1 · Olympiad Level
+            </span>
+
+            <span class="difficulty">
+                9.5 / 10
+            </span>
+
+            <span class="range">
+                Class 9-12
+            </span>
+
         </div>
+
 
         <h2>Olympiad Level</h2>
 
+
         <div class="problem-content">
 
-           Two equations are given as:
-$$\sqrt{(3x^2 + 5x + 2)^n - (2x^2 + 5x + 3)^n + 346} = 371$$
-$$y^n +  \left(2y + \frac{2}{y} + \frac{2}{y^2}\right)^\frac{n}{2} - \left(\frac{4}{y} + \frac{4}{y^3}\right) = 83$$
-If:
-$$x = \{a: a\in y, a\in N, a = \frac{4y}{3+\sqrt{5}}\}$$
-$$n = \{a: a\in N\}$$
-$$y = \{a: 2a + \sqrt{5} > 3\}$$
-Then, find the value of:
-$$n + xy$$
+            <p>
+                Two equations are given as:
+            </p>
+
+            $$\sqrt{(3x^2 + 5x + 2)^n - (2x^2 + 5x + 3)^n + 346} = 371$$
+
+            $$y^n + \left(2y + \frac{2}{y} + \frac{2}{y^2}\right)^\frac{n}{2}
+            - \left(\frac{4}{y} + \frac{4}{y^3}\right) = 83$$
+
+            <p>
+                If:
+            </p>
+
+            $$x = \{a: a\in y,\ a\in N,\ a = \frac{4y}{3+\sqrt{5}}\}$$
+
+            $$n = \{a: a\in N\}$$
+
+            $$y = \{a: 2a + \sqrt{5} > 3\}$$
+
+            <p>
+                Then, find the value of:
+            </p>
+
+            $$n + xy$$
 
         </div>
 
     </section>
 
 
-    <!-- ========================= -->
-    <!-- PROBLEM 2: JEE ADVANCED -->
-    <!-- ========================= -->
+
+    <!-- ================================================= -->
+    <!-- PROBLEM 2 -->
+    <!-- ================================================= -->
 
     <section class="problem">
 
         <div class="problem-header">
-            <span class="problem-number">Problem 2 · JEE Advanced Level</span>
-            <span class="difficulty">9.8 / 10</span>
-           <span class="Range: ">Class 11-12</span>
+
+            <span class="problem-number">
+                Problem 2 · JEE Advanced Level
+            </span>
+
+            <span class="difficulty">
+                9.8 / 10
+            </span>
+
+            <span class="range">
+                Class 11-12
+            </span>
+
         </div>
+
 
         <h2>JEE Advanced Level</h2>
 
+
         <div class="problem-content">
 
-           Two periodic, continuous and infinitely differentiable functions of x are defined such that:
-\\$f(x) = \frac{1}{2i}\sum_{n=k}^\infty \frac{(ix)^n - (-ix)^n}{\Gamma(n+1)}$; where $\Gamma(n) = (n-1)!$ \\ \\
-$g(x) = \sum_{n=k}^\infty (-1)^n\frac{x^2n}{4^n\cdot n!(\frac{1}{2})_n}$; where $(\frac{1}{k})_n = \frac{1}{k}\cdot\frac{3}{k}\cdot\frac{5}{k}\cdot...\cdot \frac{2n-1}{k}$\\ \\
-Let a matrix be defined as:
-\[
-A=
-\begin{bmatrix}
-f(x) & g(x)\\
-2k & f(x)
-\end{bmatrix}
-+
-\begin{bmatrix}
-k & 2k\\
-g(x) & 5k
-\end{bmatrix}
-\] \\
-If $A_1$ refers to the matrix which contains the first order derivative of each element of A, $A_2$ refers to the matrix which contains the second order derivative of each element of A,..., $A_n$ refers to the matrix which contains the nth order derivative of each element of A:
-\[
-A_n=
-\begin{bmatrix}
-\frac{d^nf(x)}{dx^n} & \frac{d^ng(x)}{dx^n}\\ \\
-\frac{d^n2k}{dx^n} & \frac{d^nf(x)}{dx^n}
-\end{bmatrix}
-+
-\begin{bmatrix}
-\frac{d^nk}{dx^n} & \frac{d^n2k}{dx^n}\\ \\
-\frac{d^ng(x)}{dx^n} & \frac{d^n5k}{dx^n}
-\end{bmatrix}
-\]
-And if $|A_{2027}|(x)$ is a continuous, periodic and infinitely differentiable function of x such that:
-$$\int_k^{sin^{-1}(-|A_{2027}|(k))}|A_{2027}|dx = k$$
-Find the value of:
-$$6\lim_{x\xrightarrow{}k}\frac{sin^{k-1}x - x^{k+1}}{x^3}$$
+            <p>
+                Two periodic, continuous and infinitely differentiable
+                functions of \(x\) are defined such that:
+            </p>
+
+            \[
+            f(x)
+            =
+            \frac{1}{2i}
+            \sum_{n=k}^{\infty}
+            \frac{(ix)^n-(-ix)^n}
+            {\Gamma(n+1)}
+            \]
+
+            <p>
+                where
+            </p>
+
+            \[
+            \Gamma(n)=(n-1)!
+            \]
+
+            <p>
+                and
+            </p>
+
+            \[
+            g(x)
+            =
+            \sum_{n=k}^{\infty}
+            (-1)^n
+            \frac{x^{2n}}
+            {4^n\cdot n!\left(\frac{1}{2}\right)_n}
+            \]
+
+            <p>
+                where
+            </p>
+
+            \[
+            \left(\frac{1}{k}\right)_n
+            =
+            \frac{1}{k}
+            \cdot
+            \frac{3}{k}
+            \cdot
+            \frac{5}{k}
+            \cdots
+            \frac{2n-1}{k}
+            \]
+
+            <p>
+                Let a matrix be defined as:
+            </p>
+
+            \[
+            A=
+            \begin{bmatrix}
+            f(x) & g(x)\\
+            2k & f(x)
+            \end{bmatrix}
+            +
+            \begin{bmatrix}
+            k & 2k\\
+            g(x) & 5k
+            \end{bmatrix}
+            \]
+
+            <p>
+                If \(A_1\) refers to the matrix which contains the first
+                order derivative of each element of \(A\), \(A_2\) refers
+                to the matrix which contains the second order derivative
+                of each element of \(A\), and so on, then:
+            </p>
+
+            \[
+            A_n=
+            \begin{bmatrix}
+            \frac{d^nf(x)}{dx^n}
+            &
+            \frac{d^ng(x)}{dx^n}
+            \\[8pt]
+            \frac{d^n(2k)}{dx^n}
+            &
+            \frac{d^nf(x)}{dx^n}
+            \end{bmatrix}
+            +
+            \begin{bmatrix}
+            \frac{d^nk}{dx^n}
+            &
+            \frac{d^n(2k)}{dx^n}
+            \\[8pt]
+            \frac{d^ng(x)}{dx^n}
+            &
+            \frac{d^n(5k)}{dx^n}
+            \end{bmatrix}
+            \]
+
+            <p>
+                And if
+            </p>
+
+            \[
+            |A_{2027}|(x)
+            \]
+
+            <p>
+                is a continuous, periodic and infinitely differentiable
+                function of \(x\) such that:
+            </p>
+
+            \[
+            \int_k^{\sin^{-1}(-|A_{2027}|(k))}
+            |A_{2027}|\,dx
+            =
+            k
+            \]
+
+            <p>
+                Find the value of:
+            </p>
+
+            \[
+            6
+            \lim_{x\to k}
+            \frac{\sin^{k-1}x-x^{k+1}}
+            {x^3}
+            \]
 
         </div>
 
     </section>
 
 
-    <!-- ========================= -->
-    <!-- PROBLEM 3: HIGHER MATHS -->
-    <!-- ========================= -->
+
+    <!-- ================================================= -->
+    <!-- PROBLEM 3 -->
+    <!-- ================================================= -->
 
     <section class="problem">
 
         <div class="problem-header">
-            <span class="problem-number">Problem 3 · Higher Mathematics</span>
-            <span class="difficulty">9.7 / 10</span>
-          <span class="Range:">College Level</span>
+
+            <span class="problem-number">
+                Problem 3 · Higher Mathematics
+            </span>
+
+            <span class="difficulty">
+                9.7 / 10
+            </span>
+
+            <span class="range">
+                College Level
+            </span>
+
         </div>
+
 
         <h2>Higher Mathematics</h2>
 
+
         <div class="problem-content">
 
-            Let: 
-$$u= (x-y)\cdot sin(x+y) + e^{x+y}$$
-If:
-$$\frac{\partial^nu}{\partial x^n} + \frac{\partial^nu}{\partial y^n} = 2\frac{\partial^nu}{\partial x^{n/2} \partial y^{n/2}}$$
-$$n = \{x:x \leq100, x = a_1,a_2,...,a_k; a_k>a_{k-1}\}$$
-Let $f:(-1,1) \xrightarrow{} \mathbb{R}$ be a function defined as:
-$$f(x) = x^{a_1/2} + \frac{x^{a_1}}{4} + 27x^{a_2-1} + \frac{x^{a_2}}{a_8} + x^{a_2 + 1}(30a_{50} + (a_3 - 1)^3) + ...$$
-Let $g:(-1,1) \xrightarrow{} \mathbb{R}$ be a function defined as:
-$$g(x) = \sum_{k=\frac{a_{50}-a_{49}}{2}}^\infty \frac{1}{k} \int_{a_{50} - 25a_{2}}^xf\left(\frac{t}{k}\right)\frac{dtdf\left(\frac{t}{k}\right)}{d\left(\frac{t}{k}\right)}$$
-Find the value of:
-$$\lim_{x\xrightarrow{}0} \left(\frac{g'(x)}{\pi^2f(x)}\cdot \frac{1}{\lim_{x\xrightarrow{}a_{20}-2a_{10}}\frac{sin^{-1}x -x}{x^3}}\right  )$$
+            <p>
+                Let:
+            </p>
+
+            $$u=(x-y)\cdot\sin(x+y)+e^{x+y}$$
+
+            <p>
+                If:
+            </p>
+
+            \[
+            \frac{\partial^n u}{\partial x^n}
+            +
+            \frac{\partial^n u}{\partial y^n}
+            =
+            2
+            \frac{\partial^n u}
+            {\partial x^{n/2}\partial y^{n/2}}
+            \]
+
+            <p>
+                and
+            </p>
+
+            \[
+            n=
+            \{x:x\leq100,\ x=a_1,a_2,\ldots,a_k;\ a_k>a_{k-1}\}
+            \]
+
+            <p>
+                Let
+            </p>
+
+            \[
+            f:(-1,1)\rightarrow\mathbb{R}
+            \]
+
+            <p>
+                be a function defined as:
+            </p>
+
+            \[
+            f(x)
+            =
+            x^{a_1/2}
+            +
+            \frac{x^{a_1}}{4}
+            +
+            27x^{a_2-1}
+            +
+            \frac{x^{a_2}}{a_8}
+            +
+            x^{a_2+1}
+            \left(
+            30a_{50}
+            +(a_3-1)^3
+            \right)
+            +\cdots
+            \]
+
+            <p>
+                Let
+            </p>
+
+            \[
+            g:(-1,1)\rightarrow\mathbb{R}
+            \]
+
+            <p>
+                be a function defined as:
+            </p>
+
+            \[
+            g(x)
+            =
+            \sum_{k=\frac{a_{50}-a_{49}}{2}}^\infty
+            \frac{1}{k}
+            \int_{a_{50}-25a_2}^{x}
+            f\left(\frac{t}{k}\right)
+            \frac{
+            d f\left(\frac{t}{k}\right)
+            }{
+            d\left(\frac{t}{k}\right)
+            }
+            \,dt
+            \]
+
+            <p>
+                Find the value of:
+            </p>
+
+            \[
+            \lim_{x\to0}
+            \left(
+            \frac{g'(x)}
+            {\pi^2f(x)}
+            \cdot
+            \frac{1}{
+            \displaystyle
+            \lim_{x\to a_{20}-2a_{10}}
+            \frac{\sin^{-1}x-x}{x^3}
+            }
+            \right)
+            \]
 
         </div>
 
     </section>
 
 
+
+    <!-- =============================== -->
+    <!-- FOOTER -->
+    <!-- =============================== -->
+
     <footer>
+
         Sample Problems
+
     </footer>
+
 
 </div>
 
 </body>
+
 </html>
