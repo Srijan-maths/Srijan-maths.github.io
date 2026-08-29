@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sample Problems</title>
+
+    <!-- MathJax: renders LaTeX -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+
+    <script async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #0b0d10;
+            color: #e8eaed;
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.7;
+        }
+
+        .container {
+            width: min(900px, 92%);
+            margin: auto;
+            padding: 60px 0 80px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #9aa0a6;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        .problem {
+            background: #12161b;
+            border: 1px solid #252a31;
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .problem-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #252a31;
+        }
+
+        .problem-number {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            color: #aeb4bd;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .difficulty {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid #3a4048;
+            color: #d5d9df;
+        }
+
+        .problem h2 {
+            font-size: 25px;
+            margin: 0 0 20px;
+        }
+
+        .problem-content {
+            font-size: 17px;
+            color: #d8dbe0;
+        }
+
+        .math {
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #666d76;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 32px;
+            }
+
+            .problem {
+                padding: 23px;
+            }
+
+            .problem-header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Sample Problems</h1>
+        <p>Selected problems in advanced mathematics: After first submission of a problem, solution will be revealed in the solutions section. Hall of Fame Entry is available.</p>
+    </header>
+
+
+    <!-- ========================= -->
+    <!-- PROBLEM 1: OLYMPIAD -->
+    <!-- ========================= -->
+
+    <section class="problem">
+
+        <div class="problem-header">
+            <span class="problem-number">Problem 1 · Olympiad Level</span>
+            <span class="difficulty">9.5 / 10</span>
+          <span class="Range: ">Class 9-12</span>
+        </div>
+
+        <h2>Olympiad Level</h2>
+
+        <div class="problem-content">
+
+           Two equations are given as:
+$$\sqrt{(3x^2 + 5x + 2)^n - (2x^2 + 5x + 3)^n + 346} = 371$$
+$$y^n +  \left(2y + \frac{2}{y} + \frac{2}{y^2}\right)^\frac{n}{2} - \left(\frac{4}{y} + \frac{4}{y^3}\right) = 83$$
+If:
+$$x = \{a: a\in y, a\in N, a = \frac{4y}{3+\sqrt{5}}\}$$
+$$n = \{a: a\in N\}$$
+$$y = \{a: 2a + \sqrt{5} > 3\}$$
+Then, find the value of:
+$$n + xy$$
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PROBLEM 2: JEE ADVANCED -->
+    <!-- ========================= -->
+
+    <section class="problem">
+
+        <div class="problem-header">
+            <span class="problem-number">Problem 2 · JEE Advanced Level</span>
+            <span class="difficulty">9.8 / 10</span>
+           <span class="Range: ">Class 11-12</span>
+        </div>
+
+        <h2>JEE Advanced Level</h2>
+
+        <div class="problem-content">
+
+           Two periodic, continuous and infinitely differentiable functions of x are defined such that:
+\\$f(x) = \frac{1}{2i}\sum_{n=k}^\infty \frac{(ix)^n - (-ix)^n}{\Gamma(n+1)}$; where $\Gamma(n) = (n-1)!$ \\ \\
+$g(x) = \sum_{n=k}^\infty (-1)^n\frac{x^2n}{4^n\cdot n!(\frac{1}{2})_n}$; where $(\frac{1}{k})_n = \frac{1}{k}\cdot\frac{3}{k}\cdot\frac{5}{k}\cdot...\cdot \frac{2n-1}{k}$\\ \\
+Let a matrix be defined as:
+\[
+A=
+\begin{bmatrix}
+f(x) & g(x)\\
+2k & f(x)
+\end{bmatrix}
++
+\begin{bmatrix}
+k & 2k\\
+g(x) & 5k
+\end{bmatrix}
+\] \\
+If $A_1$ refers to the matrix which contains the first order derivative of each element of A, $A_2$ refers to the matrix which contains the second order derivative of each element of A,..., $A_n$ refers to the matrix which contains the nth order derivative of each element of A:
+\[
+A_n=
+\begin{bmatrix}
+\frac{d^nf(x)}{dx^n} & \frac{d^ng(x)}{dx^n}\\ \\
+\frac{d^n2k}{dx^n} & \frac{d^nf(x)}{dx^n}
+\end{bmatrix}
++
+\begin{bmatrix}
+\frac{d^nk}{dx^n} & \frac{d^n2k}{dx^n}\\ \\
+\frac{d^ng(x)}{dx^n} & \frac{d^n5k}{dx^n}
+\end{bmatrix}
+\]
+And if $|A_{2027}|(x)$ is a continuous, periodic and infinitely differentiable function of x such that:
+$$\int_k^{sin^{-1}(-|A_{2027}|(k))}|A_{2027}|dx = k$$
+Find the value of:
+$$6\lim_{x\xrightarrow{}k}\frac{sin^{k-1}x - x^{k+1}}{x^3}$$
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PROBLEM 3: HIGHER MATHS -->
+    <!-- ========================= -->
+
+    <section class="problem">
+
+        <div class="problem-header">
+            <span class="problem-number">Problem 3 · Higher Mathematics</span>
+            <span class="difficulty">9.7 / 10</span>
+          <span class="Range:">College Level</span>
+        </div>
+
+        <h2>Higher Mathematics</h2>
+
+        <div class="problem-content">
+
+            Let: 
+$$u= (x-y)\cdot sin(x+y) + e^{x+y}$$
+If:
+$$\frac{\partial^nu}{\partial x^n} + \frac{\partial^nu}{\partial y^n} = 2\frac{\partial^nu}{\partial x^{n/2} \partial y^{n/2}}$$
+$$n = \{x:x \leq100, x = a_1,a_2,...,a_k; a_k>a_{k-1}\}$$
+Let $f:(-1,1) \xrightarrow{} \mathbb{R}$ be a function defined as:
+$$f(x) = x^{a_1/2} + \frac{x^{a_1}}{4} + 27x^{a_2-1} + \frac{x^{a_2}}{a_8} + x^{a_2 + 1}(30a_{50} + (a_3 - 1)^3) + ...$$
+Let $g:(-1,1) \xrightarrow{} \mathbb{R}$ be a function defined as:
+$$g(x) = \sum_{k=\frac{a_{50}-a_{49}}{2}}^\infty \frac{1}{k} \int_{a_{50} - 25a_{2}}^xf\left(\frac{t}{k}\right)\frac{dtdf\left(\frac{t}{k}\right)}{d\left(\frac{t}{k}\right)}$$
+Find the value of:
+$$\lim_{x\xrightarrow{}0} \left(\frac{g'(x)}{\pi^2f(x)}\cdot \frac{1}{\lim_{x\xrightarrow{}a_{20}-2a_{10}}\frac{sin^{-1}x -x}{x^3}}\right  )$$
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        Sample Problems
+    </footer>
+
+</div>
+
+</body>
+</html>
