@@ -214,6 +214,166 @@
     </a>
 
 </header>
+```html
+<!-- =============================== -->
+<!-- HALL OF FAME ANNOUNCEMENT BANNER -->
+<!-- =============================== -->
+
+<style>
+    .hall-of-fame-banner {
+        width: 100%;
+        background: linear-gradient(
+            90deg,
+            #ff1744,
+            #ff9100,
+            #ffee00,
+            #00e676,
+            #00b0ff,
+            #7c4dff,
+            #ff1744
+        );
+        background-size: 400% 100%;
+        animation: gradientMove 8s linear infinite;
+        color: #000;
+        text-align: center;
+        padding: 22px 15px;
+        position: relative;
+        overflow: hidden;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .hall-of-fame-banner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            120deg,
+            transparent 30%,
+            rgba(255,255,255,0.45) 50%,
+            transparent 70%
+        );
+        transform: translateX(-100%);
+        animation: shine 4s infinite;
+    }
+
+    .hall-of-fame-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hall-of-fame-title {
+        font-size: clamp(28px, 5vw, 52px);
+        font-weight: 1000;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 0 0 8px;
+    }
+
+    .hall-of-fame-subtitle {
+        font-size: clamp(16px, 2.5vw, 23px);
+        font-weight: 800;
+        margin: 0 0 16px;
+    }
+
+    .explore-button {
+        display: inline-block;
+        padding: 13px 25px;
+        background: #000;
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 900;
+        border-radius: 8px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .explore-button:hover {
+        transform: scale(1.08);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    }
+
+    @keyframes gradientMove {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 400% 50%;
+        }
+    }
+
+    @keyframes shine {
+        0% {
+            transform: translateX(-100%);
+        }
+        45%, 100% {
+            transform: translateX(100%);
+        }
+    }
+
+
+    /* =============================== */
+    /* CONTACT INFORMATION */
+    /* =============================== */
+
+    .contact-strip {
+        width: 100%;
+        background: #11151a;
+        color: #d8dce2;
+        text-align: center;
+        padding: 12px 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        border-bottom: 1px solid #292f36;
+    }
+
+    .contact-strip a {
+        color: #55c7ff;
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+    .contact-strip a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+
+<div class="hall-of-fame-banner">
+
+    <div class="hall-of-fame-content">
+
+        <div class="hall-of-fame-title">
+            🏆 HALL OF FAME IS NOW AVAILABLE 🏆
+        </div>
+
+        <div class="hall-of-fame-subtitle">
+            Explore some of my hardest sample problems
+        </div>
+
+        <a href="Sample.html" class="explore-button">
+            EXPLORE SAMPLE PROBLEMS →
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="contact-strip">
+
+    Contact:
+    <a href="mailto:srijanchatterjee314@gmail.com">
+        srijanchatterjee314@gmail.com
+    </a>
+
+    &nbsp; | &nbsp;
+
+    <a href="tel:+919007693552">
+        +91 9007693552
+    </a>
+
+</div>
+```
 
 
 <nav>
