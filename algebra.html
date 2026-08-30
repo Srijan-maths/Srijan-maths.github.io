@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Algebra | Srijan Maths</title>
+
+
+    <!-- =============================== -->
+    <!-- MATHJAX -->
+    <!-- =============================== -->
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+
+    <script async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+
+    <!-- =============================== -->
+    <!-- ANALYTICS -->
+    <!-- =============================== -->
+
+    <script>
+        (function () {
+
+            const ANALYTICS_URL =
+                "https://script.google.com/macros/s/AKfycbw2ivnMiiV02aI5FQM_CgIBKtPWciPPZ_lqGxm1Wb5y8hpCcC4YmT8XJdIgKGt45G2I/exec";
+
+            let visitorId = localStorage.getItem("visitor_id");
+
+            if (!visitorId) {
+                visitorId = crypto.randomUUID();
+                localStorage.setItem("visitor_id", visitorId);
+            }
+
+            const page = window.location.pathname;
+            const userAgent = navigator.userAgent;
+
+            const url =
+                ANALYTICS_URL +
+                "?visitorId=" + encodeURIComponent(visitorId) +
+                "&page=" + encodeURIComponent(page) +
+                "&userAgent=" + encodeURIComponent(userAgent);
+
+            fetch(url, {
+                method: "GET",
+                mode: "no-cors"
+            });
+
+        })();
+    </script>
+
+
+    <!-- =============================== -->
+    <!-- CSS -->
+    <!-- =============================== -->
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0b0d10;
+            color: #e8eaed;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.7;
+        }
+
+
+        /* =============================== */
+        /* CONTAINER */
+        /* =============================== */
+
+        .container {
+            width: min(1000px, 92%);
+            margin: auto;
+            padding: 55px 0 80px;
+        }
+
+
+        /* =============================== */
+        /* HEADER */
+        /* =============================== */
+
+        header {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        header h1 {
+            font-size: 46px;
+            margin: 0 0 10px;
+            color: #ffffff;
+        }
+
+        header p {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #9aa0a6;
+            font-size: 15px;
+            max-width: 750px;
+            margin: auto;
+        }
+
+
+        /* =============================== */
+        /* SECTION */
+        /* =============================== */
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 27px;
+            color: #ffffff;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #292f36;
+        }
+
+
+        /* =============================== */
+        /* PROBLEM TABLE */
+        /* =============================== */
+
+        .problem-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .problem-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #12161b;
+            border: 1px solid #252a31;
+            border-radius: 10px;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .problem-table th {
+            background: #191e24;
+            color: #ffffff;
+            text-align: left;
+            padding: 14px 16px;
+            font-size: 14px;
+            letter-spacing: 0.4px;
+        }
+
+        .problem-table td {
+            padding: 14px 16px;
+            border-top: 1px solid #252a31;
+            color: #d8dbe0;
+            font-size: 14px;
+        }
+
+        .problem-table tr:hover td {
+            background: #171c22;
+        }
+
+        .problem-link {
+            color: #66c7ff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .problem-link:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =============================== */
+        /* DIFFICULTY */
+        /* =============================== */
+
+        .difficulty {
+            display: inline-block;
+            padding: 3px 8px;
+            border: 1px solid #3a4048;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #d5d9df;
+        }
+
+
+        /* =============================== */
+        /* BOOK CARDS */
+        /* =============================== */
+
+        .books {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .book {
+            background: #12161b;
+            border: 1px solid #252a31;
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .book h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+            color: #ffffff;
+        }
+
+        .book p {
+            margin: 0;
+            color: #9aa0a6;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+
+
+        /* =============================== */
+        /* BACK BUTTON */
+        /* =============================== */
+
+        .back {
+            display: inline-block;
+            margin-bottom: 30px;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+
+            color: #66c7ff;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =============================== */
+        /* FOOTER */
+        /* =============================== */
+
+        footer {
+            text-align: center;
+            margin-top: 70px;
+
+            color: #666d76;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 13px;
+        }
+
+
+        /* =============================== */
+        /* MOBILE */
+        /* =============================== */
+
+        @media (max-width: 700px) {
+
+            .container {
+                padding-top: 30px;
+            }
+
+            header h1 {
+                font-size: 35px;
+            }
+
+            .books {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =============================== -->
+    <!-- BACK TO HOME -->
+    <!-- =============================== -->
+
+    <a href="index.html" class="back">
+        ← Back to Home
+    </a>
+
+
+    <!-- =============================== -->
+    <!-- HEADER -->
+    <!-- =============================== -->
+
+    <header>
+
+        <h1>Algebra</h1>
+
+        <p>
+            A collection of problems covering polynomial algebra,
+            functional equations, inequalities, sets, factorisation,
+            expansions and related topics.
+        </p>
+
+    </header>
+
+
+
+    <!-- ================================================= -->
+    <!-- POLYNOMIALS -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Polynomial
+        </h2>
+
+        <div class="problem-table-wrapper">
+
+            <table class="problem-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Problem</th>
+                        <th>Source</th>
+                        <th>Level</th>
+                        <th>Difficulty</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <a href="#" class="problem-link">
+                                Problem 9
+                            </a>
+                        </td>
+                        <td>Unpublished Collection</td>
+                        <td>JEE Advanced - Class 11-12</td>
+                        <td>
+                            <span class="difficulty">9.9 / 10</span>
+                        </td>
+                    </tr>
+
+                   
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- FUNCTIONAL EQUATIONS -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Functions
+        </h2>
+
+        <div class="problem-table-wrapper">
+
+            <table class="problem-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Problem</th>
+                        <th>Source</th>
+                        <th>Level</th>
+                        <th>Difficulty</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <a href="#" class="problem-link">
+                                Sample Problem 2
+                            </a>
+                        </td>
+                        <td>Original</td>
+                        <td>JEE Advanced: Class 11-12</td>
+                        <td>
+                            <span class="difficulty">9.8 / 10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <a href="#" class="problem-link">
+                                Sample Problem 3
+                            </a>
+                        </td>
+                        <td>Original</td>
+                        <td>College</td>
+                        <td>
+                            <span class="difficulty">9.7 / 10</span>
+                        </td>
+                    </tr>
+
+                   
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- INEQUALITIES -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Inequalities
+        </h2>
+
+        <div class="problem-table-wrapper">
+
+            <table class="problem-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Problem</th>
+                        <th>Source</th>
+                        <th>Level</th>
+                        <th>Difficulty</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <a href="#" class="problem-link">
+                                Problem 12
+                            </a>
+                        </td>
+                        <td>Unpublished Collection</td>
+                        <td>Olympiad / JEE Advanced</td>
+                        <td>
+                            <span class="difficulty">9.3 / 10</span>
+                        </td>
+                    </tr>
+
+                   
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- SETS -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Sets
+        </h2>
+
+        <div class="problem-table-wrapper">
+
+            <table class="problem-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Problem</th>
+                        <th>Source</th>
+                        <th>Level</th>
+                        <th>Difficulty</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <a href="#" class="problem-link">
+                                Sample Problem 1
+                            </a>
+                        </td>
+                        <td>Original</td>
+                        <td>Olympiad: Class 9-12</td>
+                        <td>
+                            <span class="difficulty">9.5 / 10</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <a href="#" class="problem-link">
+                                Problem 18
+                            </a>
+                        </td>
+                        <td>Unpublished Collection</td>
+                        <td>Olympiad: Class 9-10</td>
+                        <td>
+                            <span class="difficulty">9.3 / 10</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- FACTORISATION -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Factorisation
+        </h2>
+
+        <div class="problem-table-wrapper">
+
+            <table class="problem-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Problem</th>
+                        <th>Source</th>
+                        <th>Level</th>
+                        <th>Difficulty</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <a href="#" class="problem-link">
+                               Sample Problem 1
+                            </a>
+                        </td>
+                        <td>Original</td>
+                        <td>Olympiad</td>
+                        <td>
+                            <span class="difficulty">9.5 / 10</span>
+                        </td>
+                    </tr>
+
+                    
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- EXPANSIONS -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Expansions
+        </h2>
+
+        <div class="problem-table-wrapper">
+
+            <table class="problem-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Problem</th>
+                        <th>Source</th>
+                        <th>Level</th>
+                        <th>Difficulty</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <a href="#" class="problem-link">
+                               Sample Problem 1
+                            </a>
+                        </td>
+                        <td>Original</td>
+                        <td>Olympiad</td>
+                        <td>
+                            <span class="difficulty">9.5 / 10</span>
+                        </td>
+                    </tr>
+
+                    
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- RECOMMENDED BOOKS -->
+    <!-- ================================================= -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Recommended Books
+        </h2>
+
+
+        <div class="books">
+
+
+            <div class="book">
+
+                <h3>
+                          <a href="https://www.bookswagon.com/book/algebra-im-alexander-shen-i/9780817636777"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="book-link">
+                    Algebra
+                          </a>
+                </h3>
+
+                <p>
+                    I. M. Gelfand and Alexander Shen
+                </p>
+
+            </div>
+
+
+            <div class="book">
+
+                <h3>         <a href="https://anjanibooks.com/shop/mathematical-analysis/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="book-link">
+                    Mathematical Analysis 
+                </a>
+                </h3>
+
+                <p>
+                    S.C Malik and Savita Arora
+                </p>
+
+            </div>
+
+
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =============================== -->
+    <!-- FOOTER -->
+    <!-- =============================== -->
+
+    <footer>
+
+        Srijan Maths · Algebra
+
+    </footer>
+
+
+</div>
+
+
+</body>
+
+</html>
