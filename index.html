@@ -406,7 +406,238 @@
     </a>
 
 </div>
+<!-- NEW BOOK ANNOUNCEMENT BANNER -->
+<section class="book-banner">
+    <div class="book-banner-content">
 
+        <div class="book-badge">📚 NEW BOOK PUBLISHED!</div>
+
+        <h1>How to Study Smart When Everyone Else Is Wasting Time</h1>
+
+        <p class="book-subtitle">
+            Stop wasting hours. Start studying smarter.
+        </p>
+
+        <div class="book-prices">
+            <div class="price-card">
+                <h3>🇺🇸 Amazon.com</h3>
+                <p><strong>Kindle:</strong> $4 ≈ ₹340</p>
+                <p class="small-text">Free with Kindle Unlimited*</p>
+                <p><strong>Paperback:</strong> $10 ≈ ₹850</p>
+
+                <a href="https://www.amazon.com/dp/B0HHRPKBK3"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="amazon-button">
+                    Buy on Amazon.com →
+                </a>
+            </div>
+
+            <div class="price-card">
+                <h3>🇮🇳 Amazon.in</h3>
+                <p><strong>Kindle:</strong> ₹100</p>
+
+                <a href="https://www.amazon.in/dp/B0HHRPKBK3"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="amazon-button">
+                    Buy on Amazon.in →
+                </a>
+            </div>
+        </div>
+
+        <div class="book-buttons">
+            <a href="Book.html" class="explore-button">
+                📖 Explore the Book
+            </a>
+        </div>
+
+        <p class="book-note">
+            *Kindle Unlimited availability is subject to Amazon's terms and availability.
+        </p>
+
+    </div>
+</section>
+
+
+<style>
+/* ================================
+   NEW BOOK BANNER
+   ================================ */
+
+.book-banner {
+    width: 100%;
+    padding: 60px 20px;
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff416c,
+            #ff4b2b,
+            #ffb347,
+            #7b2ff7,
+            #00c6ff
+        );
+
+    background-size: 300% 300%;
+    animation: bannerGradient 10s ease infinite;
+
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+@keyframes bannerGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.book-banner-content {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.book-badge {
+    display: inline-block;
+    padding: 8px 18px;
+    margin-bottom: 15px;
+
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    backdrop-filter: blur(5px);
+}
+
+.book-banner h1 {
+    max-width: 850px;
+    margin: 10px auto;
+
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.book-subtitle {
+    font-size: 1.25rem;
+    margin: 15px 0 35px;
+    opacity: 0.95;
+}
+
+.book-prices {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.price-card {
+    width: 300px;
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+    box-sizing: border-box;
+}
+
+.price-card h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.price-card p {
+    margin: 10px 0;
+    font-size: 1.05rem;
+}
+
+.small-text {
+    font-size: 0.85rem !important;
+    opacity: 0.85;
+}
+
+.amazon-button,
+.explore-button {
+    display: inline-block;
+
+    padding: 12px 22px;
+    margin-top: 15px;
+
+    border-radius: 30px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.amazon-button {
+    background: white;
+    color: #222;
+}
+
+.explore-button {
+    background: #111;
+    color: white;
+    padding: 15px 28px;
+    font-size: 1.05rem;
+}
+
+.amazon-button:hover,
+.explore-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.book-note {
+    margin-top: 25px;
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .book-banner {
+        padding: 40px 15px;
+    }
+
+    .book-banner h1 {
+        font-size: 2rem;
+    }
+
+    .book-subtitle {
+        font-size: 1rem;
+    }
+
+    .price-card {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+</style>
 
 
 <nav>
