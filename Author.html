@@ -1,27 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Author's Challenge</title>
-<script>
-  window.MathJax = {
-    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }
-  };
-</script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</head>
-<body>
-\section{Difficulty: 10/10; 
-Range: Class 9-12; Level: Author's Challenge;\\
-(HALL OF FAME ENTRY IS AVAILABLE
-FOR THE FIRST SUBMISSION)}
 
-A conjecture states that if:
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Author's Challenge </title></title>
+
+
+    <!-- =============================== -->
+    <!-- MATHJAX -->
+    <!-- =============================== -->
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+
+    <script async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+
+    <!-- =============================== -->
+    <!-- WEBSITE ANALYTICS -->
+    <!-- =============================== -->
+
+    <script>
+        (function () {
+
+            const ANALYTICS_URL =
+                "https://script.google.com/macros/s/AKfycbw2ivnMiiV02aI5FQM_CgIBKtPWciPPZ_lqGxm1Wb5y8hpCcC4YmT8XJdIgKGt45G2I/exec";
+
+            let visitorId = localStorage.getItem("visitor_id");
+
+            if (!visitorId) {
+                visitorId = crypto.randomUUID();
+                localStorage.setItem("visitor_id", visitorId);
+            }
+
+            const page = window.location.pathname;
+            const userAgent = navigator.userAgent;
+
+            const url =
+                ANALYTICS_URL +
+                "?visitorId=" + encodeURIComponent(visitorId) +
+                "&page=" + encodeURIComponent(page) +
+                "&userAgent=" + encodeURIComponent(userAgent);
+
+            fetch(url, {
+                method: "GET",
+                mode: "no-cors"
+            });
+
+        })();
+    </script>
+
+
+    <!-- =============================== -->
+    <!-- CSS -->
+    <!-- =============================== -->
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0b0d10;
+            color: #e8eaed;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.7;
+        }
+
+
+        /* =============================== */
+        /* MAIN CONTAINER */
+        /* =============================== */
+
+        .container {
+            width: min(900px, 92%);
+            margin: auto;
+            padding: 60px 0 80px;
+        }
+
+
+        /* =============================== */
+        /* HEADER */
+        /* =============================== */
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin: 0 0 12px;
+            color: #ffffff;
+        }
+
+        header p {
+            color: #9aa0a6;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            margin: 0 auto;
+            max-width: 750px;
+        }
+
+
+        /* =============================== */
+        /* PROBLEM CARD */
+        /* =============================== */
+
+        .problem {
+            background: #12161b;
+            border: 1px solid #252a31;
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 32px;
+
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* =============================== */
+        /* PROBLEM HEADER */
+        /* =============================== */
+
+        .problem-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 25px;
+            padding-bottom: 16px;
+
+            border-bottom: 1px solid #252a31;
+        }
+
+        .problem-number {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            color: #aeb4bd;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+
+        /* =============================== */
+        /* DIFFICULTY + RANGE */
+        /* =============================== */
+
+        .difficulty,
+        .range {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            border: 1px solid #3a4048;
+
+            color: #d5d9df;
+
+            white-space: nowrap;
+        }
+
+
+        /* =============================== */
+        /* PROBLEM TITLE */
+        /* =============================== */
+
+        .problem h2 {
+            font-size: 25px;
+            margin: 0 0 20px;
+            color: #ffffff;
+        }
+
+
+        /* =============================== */
+        /* PROBLEM CONTENT */
+        /* =============================== */
+
+        .problem-content {
+            font-size: 17px;
+            color: #d8dbe0;
+            overflow-wrap: break-word;
+        }
+
+        .problem-content p {
+            margin: 18px 0;
+        }
+
+
+        /* =============================== */
+        /* MATHJAX */
+        /* =============================== */
+
+        mjx-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+            max-width: 100%;
+        }
+
+
+        /* =============================== */
+        /* FOOTER */
+        /* =============================== */
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #666d76;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+        }
+
+
+        /* =============================== */
+        /* MOBILE */
+        /* =============================== */
+
+        @media (max-width: 700px) {
+
+            .container {
+                padding-top: 35px;
+            }
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            .problem {
+                padding: 23px;
+            }
+
+            .problem-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .problem-content {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- =============================== -->
+    <!-- PAGE HEADER -->
+    <!-- =============================== -->
+
+    <header>
+
+        <h1>Author's Challenge</h1>
+
+        <p>
+            Selected toughest of the problems in advanced mathematics.
+            After first submission of a problem, solution will be revealed
+            in the solutions section. Hall of Fame Entry is available.
+        </p>
+
+    </header>
+
+
+
+    <!-- ================================================= -->
+    <!-- PROBLEM 1 -->
+    <!-- ================================================= -->
+
+    <section class="problem">
+
+        <div class="problem-header">
+
+            <span class="problem-number">
+                Problem 1 · Author's Challenge
+            </span>
+
+            <span class="difficulty">
+                10 / 10
+            </span>
+
+            <span class="range">
+                Class 9-12
+            </span>
+
+        </div>
+
+
+        <h2>Author's Challenge</h2>
+
+
+        <div class="problem-content">
+
+<p>A conjecture states that if:</p>
 $$\frac{\underbrace{dd\cdots dd}_{n\text{ times}}}{\underbrace{d+d+\cdots +d+d}_{n\text{ times}}}\in \mathbb{N}$$
-If d is a digit of the number dd...dd such that:
+<p>If d is a digit of the number dd...dd such that:</p>
 $$(0<d\leq 9),(n \in \mathbb{N})$$
-Then the only solutions of n are in the form:
+<p>Then the only solutions of n are in the form:</p>
 $$\left(n=37^a\cdot3^b\right)\forall \left(a,b\in\mathbb{W}\right)$$
-Prove this conjecture true or false.
+<p>Prove this conjecture true or false.</p>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <!-- =============================== -->
+    <!-- FOOTER -->
+    <!-- =============================== -->
+
+    <footer>
+
+        Author's Challenge
+
+    </footer>
+
+
+</div>
+
 </body>
+
 </html>
