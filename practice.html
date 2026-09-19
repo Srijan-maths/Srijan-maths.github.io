@@ -3,27 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Practice Engine - Srijan Maths</title>
+    <title>Practice & Mock Test Engine - Srijan Maths</title>
 
-    <!-- KaTeX CSS & JS for LaTeX Math Rendering -->
+    <!-- KaTeX CSS & JS for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, Helvetica, sans-serif; background: #f5f7fa; color: #222; }
-        header { background: linear-gradient(135deg, #1565C0, #0D47A1); color: white; text-align: center; padding: 25px 20px; }
-        nav { background: white; display: flex; justify-content: center; flex-wrap: wrap; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
-        nav a { color: #1565C0; text-decoration: none; padding: 14px 20px; font-weight: bold; }
-        nav a:hover { background: #1565C0; color: white; }
-        .container { width: 90%; max-width: 1000px; margin: 30px auto; }
-        footer { margin-top: 50px; background: #0D47A1; color: white; text-align: center; padding: 20px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1565C0, #0D47A1);
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+
+        nav {
+            background: white;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,.1);
+        }
+
+        nav a {
+            color: #1565C0;
+            text-decoration: none;
+            padding: 14px 22px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            background: #1565C0;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+            min-height: 500px;
+        }
+
+        #app {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        footer {
+            margin-top: 50px;
+            background: #0D47A1;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Srijan Maths — Problem Generator</h1>
+    <h1>Srijan Maths — Interactive Engine</h1>
 </header>
 
 <nav>
@@ -31,15 +89,18 @@
 </nav>
 
 <div class="container">
-    <div id="app"></div>
+    <!-- App Container where the Generator Mounts -->
+    <div id="app">Loading test engine...</div>
 </div>
 
 <footer>
     <p>© 2026 Srijan Chatterjee. All Rights Reserved.</p>
 </footer>
 
-<!-- JavaScript Modules -->
+<!-- 1. Data & Modules -->
 <script src="math-generator/data/topics.js"></script>
+
+<!-- 2. Core Engine -->
 <script src="math-generator/core/random.js"></script>
 <script src="math-generator/core/validator.js"></script>
 <script src="math-generator/core/answerChecker.js"></script>
@@ -47,32 +108,44 @@
 <script src="math-generator/core/paperGenerator.js"></script>
 <script src="math-generator/core/testRunner.js"></script>
 
+<!-- 3. Math Problem Generators -->
 <script src="math-generator/generators/algebra.js"></script>
 <script src="math-generator/generators/numberTheory.js"></script>
 <script src="math-generator/generators/combinatorics.js"></script>
 <script src="math-generator/generators/inequalities.js"></script>
 <script src="math-generator/generators/index.js"></script>
 
+<!-- 4. UI & State -->
 <script src="math-generator/ui/renderer.js"></script>
 <script src="math-generator/ui/timer.js"></script>
 <script src="math-generator/ui/state.js"></script>
 
-<script src="main.js"></script>
-<script>
-    // Read ?mode=mock or ?mode=practice from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const selectedMode = urlParams.get('mode');
+<!-- 5. Main Script (Check if main.js is at root or inside math-generator/) -->
+<script src="main.js" onerror="this.onerror=null;this.src='math-generator/main.js';"></script>
 
-    // Automatically set state or switch UI on load
-    if (selectedMode === 'mock') {
-        // If your state/UI renderer has a mode property or start function:
-        if (typeof state !== 'undefined') state.mode = 'mock';
-        // Force render mock mode view
-        if (typeof renderUI === 'function') renderUI(); 
-    } else {
-        if (typeof state !== 'undefined') state.mode = 'practice';
-        if (typeof renderUI === 'function') renderUI();
-    }
+<!-- 6. Explicit Auto-Initialization Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const mode = urlParams.get('mode') || 'practice';
+
+        // Set mode in state if available
+        if (typeof state !== 'undefined') {
+            state.mode = mode;
+        }
+
+        // Trigger your main init/render function
+        if (typeof initApp === 'function') {
+            initApp(mode);
+        } else if (typeof renderUI === 'function') {
+            renderUI();
+        } else if (typeof render === 'function') {
+            render();
+        } else if (typeof App !== 'undefined' && typeof App.init === 'function') {
+            App.init(mode);
+        }
+    });
 </script>
+
 </body>
 </html>
