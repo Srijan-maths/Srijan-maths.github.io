@@ -3,79 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice & Mock Test Engine - Srijan Maths</title>
+    <title>Srijan Maths — Practice Engine</title>
 
     <!-- KaTeX CSS & JS for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, Helvetica, sans-serif; background: #f4f6f9; color: #222; line-height: 1.6; }
+        
+        header { background: linear-gradient(135deg, #1565C0, #0D47A1); color: white; text-align: center; padding: 25px 20px; }
+        header h1 { font-size: 2.2rem; margin-bottom: 5px; }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7fa;
-            color: #222;
-            line-height: 1.6;
-        }
+        nav { background: white; display: flex; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+        nav a { color: #1565C0; text-decoration: none; padding: 14px 22px; font-weight: bold; }
+        nav a:hover { background: #1565C0; color: white; }
 
-        header {
-            background: linear-gradient(135deg, #1565C0, #0D47A1);
-            color: white;
-            text-align: center;
-            padding: 25px 20px;
-        }
+        .container { width: 90%; max-width: 900px; margin: 30px auto; }
 
-        header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-        }
-
-        nav {
-            background: white;
-            display: flex;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,.1);
-        }
-
-        nav a {
-            color: #1565C0;
-            text-decoration: none;
-            padding: 14px 22px;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        nav a:hover {
-            background: #1565C0;
-            color: white;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 30px auto;
-            min-height: 500px;
-        }
-
-        #app {
+        .card-view {
             background: white;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
         }
 
-        footer {
-            margin-top: 50px;
-            background: #0D47A1;
-            color: white;
-            text-align: center;
-            padding: 20px;
+        h2, h3 { color: #1565C0; margin-bottom: 15px; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; }
+        .form-group select, .form-group input[type="text"], .form-group input[type="number"] {
+            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;
         }
+
+        .checkbox-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 8px; }
+        .checkbox-group label { font-weight: normal; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+
+        /* Buttons */
+        .btn-primary { background: #1565C0; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .btn-primary:hover { background: #0D47A1; }
+        .btn-secondary { background: #555; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; }
+        .btn-danger { background: #d32f2f; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; }
+        
+        .mode-selection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        /* Exam & Question Card */
+        .q-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 2px solid #eee; margin-bottom: 20px; font-weight: bold; }
+        .badge { background: #e3f2fd; color: #1565C0; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; }
+        .q-body { font-size: 1.2rem; margin-bottom: 25px; line-height: 1.8; }
+        .q-input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        .q-input-group input { flex: 1; padding: 12px; font-size: 1rem; border: 2px solid #1565C0; border-radius: 6px; }
+
+        .solution-box { padding: 18px; border-radius: 8px; margin-top: 20px; }
+        .solution-box.correct { background: #e8f5e9; border: 1px solid #4caf50; color: #1b5e20; }
+        .solution-box.incorrect { background: #ffebee; border: 1px solid #f44336; color: #b71c1c; }
+
+        #exam-nav-buttons { display: flex; gap: 10px; justify-content: space-between; margin-top: 20px; }
+        #timer-display { font-size: 1.4rem; font-weight: bold; color: #d32f2f; text-align: right; margin-bottom: 15px; }
+
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: center; margin: 20px 0; }
+        .stat-card { background: #f0f4fe; padding: 20px; border-radius: 8px; }
+
+        footer { text-align: center; padding: 20px; background: #0D47A1; color: white; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -89,18 +80,107 @@
 </nav>
 
 <div class="container">
-    <!-- App Container where the Generator Mounts -->
-    <div id="app">Loading test engine...</div>
+
+    <!-- 1. MODE SELECTION VIEW -->
+    <div id="view-mode-select" class="card-view">
+        <h2>Choose Engine Mode</h2>
+        <p style="margin-bottom: 20px;">Select how you want to practice your problem sets:</p>
+        <div class="mode-selection-grid">
+            <button id="btn-choose-practice" class="btn-primary" style="padding: 30px 15px; font-size: 1.2rem;">
+                🎯 Practice Mode
+            </button>
+            <button id="btn-choose-mock" class="btn-primary" style="padding: 30px 15px; font-size: 1.2rem; background: #28a745;">
+                ⏱️ Mock Test
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. PRACTICE CONFIGURATION VIEW -->
+    <div id="view-practice-config" class="card-view" style="display: none;">
+        <h2>Configure Practice Session</h2>
+        
+        <div class="form-group">
+            <label>Select Syllabus Topics:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" class="practice-topic-cb" value="algebra" checked> Algebra</label>
+                <label><input type="checkbox" class="practice-topic-cb" value="numberTheory" checked> Number Theory</label>
+                <label><input type="checkbox" class="practice-topic-cb" value="combinatorics" checked> Combinatorics</label>
+                <label><input type="checkbox" class="practice-topic-cb" value="inequalities" checked> Inequalities</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="practice-q-count">Number of Questions:</label>
+            <input type="number" id="practice-q-count" value="5" min="1" max="50">
+        </div>
+
+        <div class="form-group">
+            <label for="practice-diff">Starting Difficulty (1.0 to 5.0):</label>
+            <select id="practice-diff">
+                <option value="1.0">1.0 — Easy</option>
+                <option value="2.5" selected>2.5 — Medium</option>
+                <option value="4.0">4.0 — Hard</option>
+                <option value="5.0">5.0 — Olympiad / Extreme</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" id="practice-adaptive" checked> Enable Adaptive Difficulty
+            </label>
+        </div>
+
+        <button id="btn-start-practice" class="btn-primary">Start Practice Session →</button>
+    </div>
+
+    <!-- 3. MOCK TEST CONFIGURATION VIEW -->
+    <div id="view-mock-config" class="card-view" style="display: none;">
+        <h2>Configure Mock Test</h2>
+
+        <div class="form-group">
+            <label>Select Test Syllabus Topics:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" class="mock-topic-cb" value="algebra" checked> Algebra</label>
+                <label><input type="checkbox" class="mock-topic-cb" value="numberTheory" checked> Number Theory</label>
+                <label><input type="checkbox" class="mock-topic-cb" value="combinatorics" checked> Combinatorics</label>
+                <label><input type="checkbox" class="mock-topic-cb" value="inequalities" checked> Inequalities</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="mock-duration">Test Duration (Hours):</label>
+            <select id="mock-duration">
+                <option value="0.5">30 Minutes</option>
+                <option value="1.0" selected>1 Hour</option>
+                <option value="2.0">2 Hours</option>
+                <option value="3.0">3 Hours</option>
+            </select>
+        </div>
+
+        <button id="btn-start-mock" class="btn-primary" style="background: #28a745;">Begin Mock Test →</button>
+    </div>
+
+    <!-- 4. EXAM AREA VIEW -->
+    <div id="view-exam-area" class="card-view" style="display: none;">
+        <div id="timer-display"></div>
+        <div id="question-display-card"></div>
+        <div id="exam-nav-buttons"></div>
+    </div>
+
+    <!-- 5. RESULTS VIEW -->
+    <div id="view-results" class="card-view" style="display: none;">
+        <div id="results-display-card"></div>
+    </div>
+
 </div>
 
 <footer>
     <p>© 2026 Srijan Chatterjee. All Rights Reserved.</p>
 </footer>
 
-<!-- 1. Data & Modules -->
+<!-- JavaScript Dependencies -->
 <script src="math-generator/data/topics.js"></script>
 
-<!-- 2. Core Engine -->
 <script src="math-generator/core/random.js"></script>
 <script src="math-generator/core/validator.js"></script>
 <script src="math-generator/core/answerChecker.js"></script>
@@ -108,41 +188,31 @@
 <script src="math-generator/core/paperGenerator.js"></script>
 <script src="math-generator/core/testRunner.js"></script>
 
-<!-- 3. Math Problem Generators -->
 <script src="math-generator/generators/algebra.js"></script>
 <script src="math-generator/generators/numberTheory.js"></script>
 <script src="math-generator/generators/combinatorics.js"></script>
 <script src="math-generator/generators/inequalities.js"></script>
 <script src="math-generator/generators/index.js"></script>
 
-<!-- 4. UI & State -->
 <script src="math-generator/ui/renderer.js"></script>
 <script src="math-generator/ui/timer.js"></script>
 <script src="math-generator/ui/state.js"></script>
 
-<!-- 5. Main Script (Check if main.js is at root or inside math-generator/) -->
+<!-- Main Orchestrator (Tries root ./main.js first, falls back to math-generator/main.js) -->
 <script src="main.js" onerror="this.onerror=null;this.src='math-generator/main.js';"></script>
 
-<!-- 6. Explicit Auto-Initialization Script -->
+<!-- Auto-Navigate based on URL Query Parameters (?mode=practice or ?mode=mock) -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener("load", function () {
         const urlParams = new URLSearchParams(window.location.search);
-        const mode = urlParams.get('mode') || 'practice';
+        const mode = urlParams.get('mode');
 
-        // Set mode in state if available
-        if (typeof state !== 'undefined') {
-            state.mode = mode;
-        }
-
-        // Trigger your main init/render function
-        if (typeof initApp === 'function') {
-            initApp(mode);
-        } else if (typeof renderUI === 'function') {
-            renderUI();
-        } else if (typeof render === 'function') {
-            render();
-        } else if (typeof App !== 'undefined' && typeof App.init === 'function') {
-            App.init(mode);
+        if (mode === 'mock') {
+            const btn = document.getElementById("btn-choose-mock");
+            if (btn) btn.click();
+        } else if (mode === 'practice') {
+            const btn = document.getElementById("btn-choose-practice");
+            if (btn) btn.click();
         }
     });
 </script>
