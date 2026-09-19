@@ -58,6 +58,21 @@
 <script src="math-generator/ui/state.js"></script>
 
 <script src="main.js"></script>
+<script>
+    // Read ?mode=mock or ?mode=practice from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedMode = urlParams.get('mode');
 
+    // Automatically set state or switch UI on load
+    if (selectedMode === 'mock') {
+        // If your state/UI renderer has a mode property or start function:
+        if (typeof state !== 'undefined') state.mode = 'mock';
+        // Force render mock mode view
+        if (typeof renderUI === 'function') renderUI(); 
+    } else {
+        if (typeof state !== 'undefined') state.mode = 'practice';
+        if (typeof renderUI === 'function') renderUI();
+    }
+</script>
 </body>
 </html>
