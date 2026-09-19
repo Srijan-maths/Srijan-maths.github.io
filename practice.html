@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Practice Engine - Srijan Maths</title>
+
+    <!-- KaTeX CSS & JS for LaTeX Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, Helvetica, sans-serif; background: #f5f7fa; color: #222; }
+        header { background: linear-gradient(135deg, #1565C0, #0D47A1); color: white; text-align: center; padding: 25px 20px; }
+        nav { background: white; display: flex; justify-content: center; flex-wrap: wrap; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+        nav a { color: #1565C0; text-decoration: none; padding: 14px 20px; font-weight: bold; }
+        nav a:hover { background: #1565C0; color: white; }
+        .container { width: 90%; max-width: 1000px; margin: 30px auto; }
+        footer { margin-top: 50px; background: #0D47A1; color: white; text-align: center; padding: 20px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Srijan Maths — Problem Generator</h1>
+</header>
+
+<nav>
+    <a href="index.html">← Back to Home</a>
+</nav>
+
+<div class="container">
+    <div id="app"></div>
+</div>
+
+<footer>
+    <p>© 2026 Srijan Chatterjee. All Rights Reserved.</p>
+</footer>
+
+<!-- JavaScript Modules -->
+<script src="math-generator/data/topics.js"></script>
+<script src="math-generator/core/random.js"></script>
+<script src="math-generator/core/validator.js"></script>
+<script src="math-generator/core/answerChecker.js"></script>
+<script src="math-generator/core/difficulty.js"></script>
+<script src="math-generator/core/paperGenerator.js"></script>
+<script src="math-generator/core/testRunner.js"></script>
+
+<script src="math-generator/generators/algebra.js"></script>
+<script src="math-generator/generators/numberTheory.js"></script>
+<script src="math-generator/generators/combinatorics.js"></script>
+<script src="math-generator/generators/inequalities.js"></script>
+<script src="math-generator/generators/index.js"></script>
+
+<script src="math-generator/ui/renderer.js"></script>
+<script src="math-generator/ui/timer.js"></script>
+<script src="math-generator/ui/state.js"></script>
+
+<script src="main.js"></script>
+
+</body>
+</html>
