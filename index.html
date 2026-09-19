@@ -408,6 +408,151 @@
     </a>
 
 </div>
+    <!-- =================================== -->
+<!-- RGB MATH PRACTICE & MOCK TEST BANNER-->
+<!-- =================================== -->
+<style>
+    .math-engine-banner {
+        width: 100%;
+        padding: 50px 20px;
+        box-sizing: border-box;
+        margin: 40px 0;
+        border-radius: 16px;
+        background: linear-gradient(
+            135deg,
+            #ff0055,
+            #7a00ff,
+            #00e5ff,
+            #00ff66,
+            #ff0055
+        );
+        background-size: 400% 400%;
+        animation: rgbGradientAnimation 8s ease infinite;
+        color: #ffffff;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(122, 0, 255, 0.35);
+        position: relative;
+        overflow: hidden;
+    }
+
+    @keyframes rgbGradientAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .math-engine-content {
+        max-width: 900px;
+        margin: auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .engine-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        margin-bottom: 14px;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 30px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        backdrop-filter: blur(8px);
+        color: #ffffff;
+    }
+
+    .math-engine-banner h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        color: #ffffff !important;
+        margin-bottom: 12px;
+        font-weight: 900;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .engine-subtitle {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        margin-bottom: 30px;
+        opacity: 0.95;
+        font-weight: 600;
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .engine-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .engine-btn {
+        display: inline-block;
+        padding: 16px 34px;
+        font-size: 1.15rem;
+        font-weight: 900;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-mock {
+        background: #ffffff;
+        color: #0d47a1;
+    }
+
+    .btn-mock:hover {
+        transform: translateY(-4px) scale(1.04);
+        background: #f0f4fe;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-practice {
+        background: #111111;
+        color: #ffffff;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-practice:hover {
+        transform: translateY(-4px) scale(1.04);
+        background: #222222;
+        border-color: #ffffff;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (max-width: 600px) {
+        .math-engine-banner {
+            padding: 35px 15px;
+            border-radius: 12px;
+        }
+        .engine-buttons {
+            flex-direction: column;
+            gap: 12px;
+        }
+        .engine-btn {
+            width: 100%;
+        }
+    }
+</style>
+
+<section class="math-engine-banner">
+    <div class="math-engine-content">
+        <div class="engine-badge">⚡ INTERACTIVE PROBLEM ENGINE</div>
+        <h2>Test & Practice Olympiad Mathematics</h2>
+        <p class="engine-subtitle">
+            Generate custom problem sets, practice step-by-step, or challenge yourself in a timed mock test!
+        </p>
+
+        <div class="engine-buttons">
+            <a href="practice.html?mode=mock" class="engine-btn btn-mock">
+                ⏱️ Take Mock Test
+            </a>
+            <a href="practice.html?mode=practice" class="engine-btn btn-practice">
+                🎯 Practice Mode
+            </a>
+        </div>
+    </div>
+</section>
 <!-- NEW BOOK ANNOUNCEMENT BANNER -->
 <section class="book-banner">
     <div class="book-banner-content">
