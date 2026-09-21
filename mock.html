@@ -7,7 +7,6 @@
     <title>Mock Test | Srijan Maths</title>
 
     <style>
-
         * {
             box-sizing: border-box;
         }
@@ -138,11 +137,17 @@
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 20px;
+            line-height: 1.5;
         }
 
+        .loading {
+            display: none;
+            text-align: center;
+            color: #aaa;
+            margin-top: 20px;
+        }
     </style>
 </head>
-
 
 <body>
 
@@ -155,7 +160,6 @@
     </p>
 
     <div id="error" class="error"></div>
-
 
     <div class="card">
 
@@ -263,12 +267,16 @@
 
 
     <button
+        id="generateButton"
         class="generate-btn"
         onclick="generateMock()"
     >
         ⚡ Generate Mock Test
     </button>
 
+    <div id="loading" class="loading">
+        Generating your paper...
+    </div>
 
     <a href="index.html" class="back">
         ← Back to Mathematics Engine
@@ -278,7 +286,7 @@
 
 
 <!-- ========================================= -->
-<!-- MATH GENERATOR ENGINE                     -->
+<!-- ACTUAL MATH GENERATOR ENGINE              -->
 <!-- ========================================= -->
 
 <script src="math-generator/core/random.js"></script>
@@ -292,6 +300,7 @@
 <script src="math-generator/generators/inequalities.js"></script>
 
 <script src="math-generator/generators/index.js"></script>
+
 <script src="math-generator/core/paperGenerator.js"></script>
 
 
@@ -310,59 +319,158 @@ function showError(message) {
 
 function generateMock() {
 
+    const error =
+        document.getElementById("error");
+
+    error.style.display = "none";
+
+
     try {
 
-        const topics = Array.from(
-            document.querySelectorAll(".topic input:checked")
-        ).map(input => input.value);
+        const topics =
+            Array.from(
+                document.querySelectorAll(
+                    '.topic input:checked'
+                )
+            ).map(
+                input => input.value
+            );
 
 
         if (topics.length === 0) {
 
             showError(
-                "Select at least one topic."
+                "Please select at least one topic."
             );
 
             return;
         }
 
 
-        const duration =
-            parseFloat(
-                document.querySelector(
-                    'input[name="duration"]:checked'
-                ).value
+        const durationInput =
+            document.querySelector(
+                'input[name="duration"]:checked'
             );
 
 
+        if (!durationInput) {
+
+            showError(
+                "Please select a test duration."
+            );
+
+            return;
+        }
+
+
+        const durationHours =
+            Number(durationInput.value);
+
+
+        if (
+            !Number.isFinite(durationHours) ||
+            durationHours <= 0
+        ) {
+
+            showError(
+                "Invalid test duration."
+            );
+
+            return;
+        }
+
+
         const seed =
-            document.getElementById("seed")
+            document
+                .getElementById("seed")
                 .value
                 .trim();
 
+
+        /*
+         * EXACT CONFIG EXPECTED BY
+         * PaperGenerator.generateMockTest()
+         */
 
         const config = {
 
             topics: topics,
 
-            durationHours: duration,
+            durationHours: durationHours,
 
             seed: seed || undefined
 
         };
 
 
-        const randomService =
-            new RandomService(config.seed);
+        console.log(
+            "Mock configuration:",
+            config
+        );
+
+
+        /*
+         * Create generator
+         */
+
+        const rng =
+            new RandomService(
+                config.seed
+            );
 
 
         const generator =
-            new PaperGenerator(randomService);
+            new PaperGenerator(rng);
 
+
+        /*
+         * Generate actual mock
+         */
 
         const paper =
-            generator.generateMockTest(config);
+            generator.generateMockTest(
+                config
+            );
 
+
+        console.log(
+            "Generated mock:",
+            paper
+        );
+
+
+        /*
+         * IMPORTANT:
+         * Your actual engine returns
+         * paper.questions
+         */
+
+        if (
+            !paper ||
+            !Array.isArray(paper.questions)
+        ) {
+
+            throw new Error(
+                "Mock generator did not return a valid questions array."
+            );
+
+        }
+
+
+        if (
+            paper.questions.length === 0
+        ) {
+
+            throw new Error(
+                "Mock generator returned zero questions."
+            );
+
+        }
+
+
+        /*
+         * Store EXACT generated object
+         */
 
         sessionStorage.setItem(
             "generatedPaper",
@@ -376,15 +484,44 @@ function generateMock() {
         );
 
 
+        /*
+         * Verify storage before redirecting
+         */
+
+        const stored =
+            sessionStorage.getItem(
+                "generatedPaper"
+            );
+
+
+        if (!stored) {
+
+            throw new Error(
+                "Could not save the generated paper."
+            );
+
+        }
+
+
+        /*
+         * Go to paper page
+         */
+
         window.location.href =
             "paper.html";
 
-    } catch (error) {
 
-        console.error(error);
+    } catch (err) {
+
+        console.error(
+            "MOCK GENERATION ERROR:",
+            err
+        );
+
 
         showError(
-            "Could not generate the mock test. Check that all generator files are loaded correctly."
+            "Mock generation failed: " +
+            err.message
         );
 
     }
