@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mock Test | Srijan Maths</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b0b12;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: min(900px, 92%);
+            margin: auto;
+            padding: 50px 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: #15151f;
+            border: 1px solid #292938;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .topic {
+            padding: 15px;
+            border: 1px solid #363646;
+            border-radius: 12px;
+            cursor: pointer;
+            background: #101018;
+        }
+
+        .topic:hover {
+            border-color: #7a00ff;
+        }
+
+        .topic input {
+            margin-right: 8px;
+        }
+
+        .duration-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+        }
+
+        .duration-option {
+            padding: 16px;
+            text-align: center;
+            border: 1px solid #363646;
+            border-radius: 12px;
+            cursor: pointer;
+            background: #101018;
+        }
+
+        .duration-option:hover {
+            border-color: #00e5ff;
+        }
+
+        .duration-option input {
+            margin-right: 7px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 13px;
+            border-radius: 10px;
+            border: 1px solid #3a3a4a;
+            background: #0d0d15;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .generate-btn {
+            width: 100%;
+            border: none;
+            padding: 17px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ff0055, #7a00ff);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(122, 0, 255, 0.3);
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            color: white;
+        }
+
+        .error {
+            display: none;
+            background: #4b1111;
+            border: 1px solid #ff4444;
+            color: #ffaaaa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>⏱️ Mock Test</h1>
+
+    <p class="subtitle">
+        Simulate a timed mathematics competition.
+    </p>
+
+    <div id="error" class="error"></div>
+
+
+    <div class="card">
+
+        <h2>Topics</h2>
+
+        <div class="topics">
+
+            <label class="topic">
+                <input type="checkbox" value="algebra" checked>
+                Algebra
+            </label>
+
+            <label class="topic">
+                <input type="checkbox" value="numberTheory">
+                Number Theory
+            </label>
+
+            <label class="topic">
+                <input type="checkbox" value="combinatorics">
+                Combinatorics
+            </label>
+
+            <label class="topic">
+                <input type="checkbox" value="inequalities">
+                Inequalities
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Test Duration</h2>
+
+        <div class="duration-options">
+
+            <label class="duration-option">
+                <input
+                    type="radio"
+                    name="duration"
+                    value="0.5"
+                >
+                30 Minutes
+            </label>
+
+            <label class="duration-option">
+                <input
+                    type="radio"
+                    name="duration"
+                    value="1"
+                    checked
+                >
+                1 Hour
+            </label>
+
+            <label class="duration-option">
+                <input
+                    type="radio"
+                    name="duration"
+                    value="1.5"
+                >
+                1.5 Hours
+            </label>
+
+            <label class="duration-option">
+                <input
+                    type="radio"
+                    name="duration"
+                    value="2"
+                >
+                2 Hours
+            </label>
+
+            <label class="duration-option">
+                <input
+                    type="radio"
+                    name="duration"
+                    value="3"
+                >
+                3 Hours
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Randomization</h2>
+
+        <label for="seed">
+            Seed (optional)
+        </label>
+
+        <input
+            type="text"
+            id="seed"
+            placeholder="Random"
+        >
+
+    </div>
+
+
+    <button
+        class="generate-btn"
+        onclick="generateMock()"
+    >
+        ⚡ Generate Mock Test
+    </button>
+
+
+    <a href="index.html" class="back">
+        ← Back to Mathematics Engine
+    </a>
+
+</div>
+
+
+<!-- ========================================= -->
+<!-- MATH GENERATOR ENGINE                     -->
+<!-- ========================================= -->
+
+<script src="math-generator/core/random.js"></script>
+<script src="math-generator/core/validator.js"></script>
+<script src="math-generator/core/answerChecker.js"></script>
+<script src="math-generator/core/difficulty.js"></script>
+
+<script src="math-generator/generators/algebra.js"></script>
+<script src="math-generator/generators/numberTheory.js"></script>
+<script src="math-generator/generators/combinatorics.js"></script>
+<script src="math-generator/generators/inequalities.js"></script>
+
+<script src="math-generator/generators/index.js"></script>
+<script src="math-generator/core/paperGenerator.js"></script>
+
+
+<script>
+
+function showError(message) {
+
+    const error =
+        document.getElementById("error");
+
+    error.textContent = message;
+
+    error.style.display = "block";
+}
+
+
+function generateMock() {
+
+    try {
+
+        const topics = Array.from(
+            document.querySelectorAll(".topic input:checked")
+        ).map(input => input.value);
+
+
+        if (topics.length === 0) {
+
+            showError(
+                "Select at least one topic."
+            );
+
+            return;
+        }
+
+
+        const duration =
+            parseFloat(
+                document.querySelector(
+                    'input[name="duration"]:checked'
+                ).value
+            );
+
+
+        const seed =
+            document.getElementById("seed")
+                .value
+                .trim();
+
+
+        const config = {
+
+            topics: topics,
+
+            durationHours: duration,
+
+            seed: seed || undefined
+
+        };
+
+
+        const randomService =
+            new RandomService(config.seed);
+
+
+        const generator =
+            new PaperGenerator(randomService);
+
+
+        const paper =
+            generator.generateMockTest(config);
+
+
+        sessionStorage.setItem(
+            "generatedPaper",
+            JSON.stringify(paper)
+        );
+
+
+        sessionStorage.setItem(
+            "paperMode",
+            "mock"
+        );
+
+
+        window.location.href =
+            "paper.html";
+
+    } catch (error) {
+
+        console.error(error);
+
+        showError(
+            "Could not generate the mock test. Check that all generator files are loaded correctly."
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
