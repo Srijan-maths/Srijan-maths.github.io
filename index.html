@@ -411,6 +411,10 @@
     <!-- =================================== -->
 <!-- RGB MATH PRACTICE & MOCK TEST BANNER-->
 <!-- =================================== -->
+<!-- =================================== -->
+<!-- RGB MATH PRACTICE & MOCK TEST BANNER -->
+<!-- =================================== -->
+
 <style>
     .math-engine-banner {
         width: 100%;
@@ -436,9 +440,17 @@
     }
 
     @keyframes rgbGradientAnimation {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
     }
 
     .math-engine-content {
@@ -465,14 +477,14 @@
     .math-engine-banner h2 {
         font-size: clamp(2rem, 4vw, 3.2rem);
         color: #ffffff !important;
-        margin-bottom: 12px;
+        margin: 0 0 12px 0;
         font-weight: 900;
         text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
     }
 
     .engine-subtitle {
         font-size: clamp(1rem, 2vw, 1.25rem);
-        margin-bottom: 30px;
+        margin: 0 0 30px 0;
         opacity: 0.95;
         font-weight: 600;
         text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
@@ -481,6 +493,7 @@
     .engine-buttons {
         display: flex;
         justify-content: center;
+        align-items: center;
         gap: 20px;
         flex-wrap: wrap;
     }
@@ -490,15 +503,17 @@
         padding: 16px 34px;
         font-size: 1.15rem;
         font-weight: 900;
-        text-decoration: none;
+        text-decoration: none !important;
         border-radius: 50px;
         transition: all 0.3s ease;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        cursor: pointer;
     }
 
+    /* MOCK TEST BUTTON */
     .btn-mock {
         background: #ffffff;
-        color: #0d47a1;
+        color: #0d47a1 !important;
     }
 
     .btn-mock:hover {
@@ -507,9 +522,10 @@
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
 
+    /* PRACTICE BUTTON */
     .btn-practice {
         background: #111111;
-        color: #ffffff;
+        color: #ffffff !important;
         border: 2px solid rgba(255, 255, 255, 0.5);
     }
 
@@ -520,38 +536,58 @@
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
 
+    /* MOBILE */
     @media (max-width: 600px) {
         .math-engine-banner {
             padding: 35px 15px;
             border-radius: 12px;
         }
+
         .engine-buttons {
             flex-direction: column;
             gap: 12px;
         }
+
         .engine-btn {
             width: 100%;
+            box-sizing: border-box;
         }
     }
 </style>
 
 <section class="math-engine-banner">
+
     <div class="math-engine-content">
-        <div class="engine-badge">⚡ INTERACTIVE PROBLEM ENGINE</div>
-        <h2>Test & Practice Olympiad Mathematics</h2>
+
+        <div class="engine-badge">
+            ⚡ INTERACTIVE PROBLEM ENGINE
+        </div>
+
+        <h2>
+            Test &amp; Practice Olympiad Mathematics
+        </h2>
+
         <p class="engine-subtitle">
-            Generate custom problem sets, practice step-by-step, or challenge yourself in a timed mock test!
+            Generate custom problem sets, practice step-by-step,
+            or challenge yourself in a timed mock test!
         </p>
 
         <div class="engine-buttons">
-            <a href="practice.html?mode=mock" class="engine-btn btn-mock">
+
+            <!-- CORRECT: MOCK → mock.html -->
+            <a href="mock.html" class="engine-btn btn-mock">
                 ⏱️ Take Mock Test
             </a>
-            <a href="practice.html?mode=practice" class="engine-btn btn-practice">
+
+            <!-- CORRECT: PRACTICE → practice.html -->
+            <a href="practice.html" class="engine-btn btn-practice">
                 🎯 Practice Mode
             </a>
+
         </div>
+
     </div>
+
 </section>
 <!-- NEW BOOK ANNOUNCEMENT BANNER -->
 <section class="book-banner">
